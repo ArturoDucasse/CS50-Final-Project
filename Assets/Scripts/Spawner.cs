@@ -11,6 +11,7 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
+    //Making the spawn rate random with this variable
         coolDown = Random.Range(timer, 10f);
         if (UI.gameOn)
         {
