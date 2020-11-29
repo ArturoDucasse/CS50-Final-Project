@@ -14,13 +14,16 @@ public class Enemies : MonoBehaviour
 
     private void Start()
     {
+    //Getting the components 
         player = GameObject.FindWithTag("Player");
         ui = GameObject.Find("Canvas").GetComponent<UI>();
     }
 
     void Update()
     {
+    //Moving the object directly into the player
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position,speed * Time.deltaTime);
+        //Making the enemies move faster after 40s
         if (Time.time > timer)
         {
             speed++;
