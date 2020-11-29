@@ -12,14 +12,17 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+    //Getting the component 
         audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
+    //Making it to only look at the player when the game has started
         if (UI.gameOn)
         {
             LookMouse();
+            //Shoot when ever the player clicks the left mouse button and the coolDown isn't active
             if (Input.GetMouseButtonDown(0) && coolDown())
             {
                 Shoot();
