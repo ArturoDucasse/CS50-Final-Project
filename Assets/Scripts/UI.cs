@@ -18,13 +18,16 @@ public class UI : MonoBehaviour
 
     void Update()
     {
+    //Making sure to set the text
         pointsText.SetText("Points: " + points);
     }
 
     public void HeartsLeft()
     {
+    //Disabling the hearts depending of the index(heart)
         hearts[heart].SetActive(false);
         heart--;
+        //If heart is less than 0 means that the game has ended.
         if (heart < 0)
         {
             gameOn = false;
@@ -32,12 +35,15 @@ public class UI : MonoBehaviour
             Enemies[] enemies = FindObjectsOfType<Enemies>();
             player.SetActive(false);
             Instantiate(ParticleSystem, Vector3.zero, ParticleSystem.transform.rotation);
+            //Destroy any enemy left in the screen 
             foreach (var enemy in enemies)
             {
                 Destroy(enemy.gameObject);
             }
+            //Activating/deactivating the corresponding panels
             ingameScore.SetActive(false);
             finalScore.SetActive(true);
+            //Setting the end value
             score.SetText(points.ToString());
             
         }
@@ -62,7 +68,7 @@ public class UI : MonoBehaviour
         finalScore.SetActive(false);
         ingameScore.SetActive(true);
     }
-
+    //Re activating the sprites
     void RefillHearts()
     {
         foreach (var iamge in hearts)
